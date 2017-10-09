@@ -3,6 +3,7 @@ package com.qualcomm.ftcrobotcontroller.opmodes;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorController;
+import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.Range;
 import java.lang.*;
 /**
@@ -12,6 +13,10 @@ import java.lang.*;
 public class MecanumTest extends OpMode {
 
     DcMotor M1, M2, M3, M4, collector, launcher;
+    double servo1pos, servo2pos;
+    Servo top;
+    Servo bottom;
+
     //Servo Arm;
     /*
  * 1 = f1 = front left
@@ -31,6 +36,10 @@ public class MecanumTest extends OpMode {
         M2.setMode(DcMotorController.RunMode.RUN_USING_ENCODERS);
         M3.setMode(DcMotorController.RunMode.RUN_USING_ENCODERS);
         M4.setMode(DcMotorController.RunMode.RUN_USING_ENCODERS);
+
+        top = hardwareMap.servo.get("top");
+        bottom = hardwareMap.servo.get("bottom");
+
         /*collector = hardwareMap.dcMotor.get("collector");
         launcher = hardwareMap.dcMotor.get("launcher");
         Arm = hardwareMap.servo.get("Servo");*/
@@ -40,6 +49,9 @@ public class MecanumTest extends OpMode {
         M2.setDirection(DcMotor.Direction.FORWARD);
         M3.setDirection(DcMotor.Direction.REVERSE);
         M4.setDirection(DcMotor.Direction.FORWARD);
+
+        servo1pos = .5;
+        servo2pos = .5;
 
     }
 
@@ -51,6 +63,19 @@ public class MecanumTest extends OpMode {
         }
         else if(gamepad1.right_bumper){
             r = r/2;
+        }
+
+        if(gamepad1.x){
+            servo1pos = .2;
+            servo2pos = .2;
+        }
+        else if(gamepad1.b){
+            servo1pos = .8;
+            servo2pos = .8;
+        }
+        else{
+            servo1pos = .5;
+            servo2pos = .5;
         }
 
         double robotAngle = Math.atan2(gamepad1.left_stick_y, gamepad1.left_stick_x);
@@ -70,5 +95,8 @@ public class MecanumTest extends OpMode {
         M2.setPower(v2);
         M3.setPower(v3);
         M4.setPower(v4);
+
+        top.setPosition(servo1pos);
+        bottom.setPosition(servo2pos);
         }
     }
