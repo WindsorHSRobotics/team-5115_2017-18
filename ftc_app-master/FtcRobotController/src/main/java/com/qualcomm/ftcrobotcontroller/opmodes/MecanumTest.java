@@ -12,7 +12,7 @@ import java.lang.*;
 
 public class MecanumTest extends OpMode {
 
-    DcMotor M1, M2, M3, M4, collector, launcher;
+    DcMotor M1, M2, M3, M4, winch;
     double servo1pos, servo2pos;
     Servo top;
     Servo bottom;
@@ -31,6 +31,7 @@ public class MecanumTest extends OpMode {
         M2 = hardwareMap.dcMotor.get("2");
         M3 = hardwareMap.dcMotor.get("3");
         M4 = hardwareMap.dcMotor.get("4");
+        winch = hardwareMap.dcMotor.get("winch");
 
         M1.setMode(DcMotorController.RunMode.RUN_USING_ENCODERS);
         M2.setMode(DcMotorController.RunMode.RUN_USING_ENCODERS);
@@ -77,6 +78,16 @@ public class MecanumTest extends OpMode {
             servo1pos = .5;
             servo2pos = .5;
         }
+        if(gamepad1.left_trigger>.2){
+            winch.setPower(gamepad1.left_trigger);
+        }
+        else if(gamepad1.right_trigger>.1){
+            winch.setPower(-1 * gamepad1.right_trigger);
+        }
+        else{
+            winch.setPower(0);
+        }
+
 
         double robotAngle = Math.atan2(gamepad1.left_stick_y, gamepad1.left_stick_x);
         double rightX = gamepad1.right_stick_x;
