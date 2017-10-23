@@ -67,11 +67,11 @@ public class MecanumTest extends OpMode {
 
         if(gamepad1.x){
             servo1pos = .2;
-            servo2pos = .2;
+            servo2pos = .8;
         }
         else if(gamepad1.b){
             servo1pos = .8;
-            servo2pos = .8;
+            servo2pos = .2;
         }
         else{
             servo1pos = .5;
