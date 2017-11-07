@@ -46,10 +46,10 @@ public class MecanumTest extends OpMode {
         Arm = hardwareMap.servo.get("Servo");*/
 
         //establishing directions so all of the motors move in the same direction
-        M1.setDirection(DcMotor.Direction.REVERSE);
-        M2.setDirection(DcMotor.Direction.FORWARD);
-        M3.setDirection(DcMotor.Direction.REVERSE);
-        M4.setDirection(DcMotor.Direction.FORWARD);
+        M1.setDirection(DcMotor.Direction.FORWARD);
+        M2.setDirection(DcMotor.Direction.REVERSE);
+        M3.setDirection(DcMotor.Direction.FORWARD);
+        M4.setDirection(DcMotor.Direction.REVERSE);
 
         servo1pos = .5;
         servo2pos = .5;
@@ -92,13 +92,13 @@ public class MecanumTest extends OpMode {
         double robotAngle = Math.atan2(gamepad1.left_stick_y, gamepad1.left_stick_x);
         double rightX = gamepad1.right_stick_x;
         double pi = Math.PI/4;
-        double v1 = (r * -Math.cos(robotAngle + pi)) - rightX;
-        double v2 = (r * -Math.cos(robotAngle + pi)) + rightX;
-        double v3 = (r * Math.cos(robotAngle - pi)) - rightX;
-        double v4 = (r * Math.cos(robotAngle - pi)) + rightX;
+        double v1 = (r * -Math.cos(robotAngle - pi)) + rightX;
+        double v2 = (r * Math.cos(robotAngle + pi)) - rightX;
+        double v3 = (r * Math.cos(robotAngle + pi)) + rightX;
+        double v4 = (r * -Math.cos(robotAngle-pi)) -  rightX;
 
-        v1 = Range.clip(v1,-1,1);
-        v2 = Range.clip(v2,-1,1);
+        v1 = Range.clip(v1,-1.0,1.0);
+        v2 = Range.clip(v2,-1.0,1.0);
         v3 = Range.clip(v3,-1.0,1.0);
         v4 = Range.clip(v4,-1.0,1.0);
 
