@@ -80,9 +80,9 @@ public class holonomicmk1 extends OpMode
         Winch = hardwareMap.get(DcMotor.class, "Winch");
 
         F1.setDirection(DcMotorSimple.Direction.FORWARD);
-        F2.setDirection(DcMotorSimple.Direction.REVERSE);
+        F2.setDirection(DcMotorSimple.Direction.FORWARD);
         R1.setDirection(DcMotorSimple.Direction.FORWARD);
-        R2.setDirection(DcMotorSimple.Direction.REVERSE);
+        R2.setDirection(DcMotorSimple.Direction.FORWARD);
 
         Winch.setDirection(DcMotorSimple.Direction.FORWARD);
 
@@ -130,7 +130,7 @@ public class holonomicmk1 extends OpMode
         double powerR2;
 
 
-        angle = Math.atan2(gamepad1.left_stick_y, gamepad1.left_stick_x);
+        angle = Math.atan2(gamepad1.left_stick_x, gamepad1.left_stick_y);
         telemetry.addData("angle: ", angle);
 
         leftstick_x_sqr = gamepad1.left_stick_x * gamepad1.left_stick_x;
@@ -142,18 +142,26 @@ public class holonomicmk1 extends OpMode
 
         powerF1 = (power * Math.cos(angle + Pi)) + gamepad1.right_stick_x;
         powerF2 = (power * -Math.cos(angle - Pi)) - gamepad1.right_stick_x;
-        powerR1 = (power * Math.cos(angle + Pi)) + gamepad1.right_stick_x;
-        powerR2 = (power * -Math.cos(angle - Pi)) - gamepad1.right_stick_x;
+        powerR1 = (power * -Math.cos(angle + Pi)) + gamepad1.right_stick_x;
+        powerR2 = (power * Math.cos(angle - Pi)) - gamepad1.right_stick_x;
 
         powerF1 = Range.clip(powerF1,-1.0, 1.0);
         powerF2 = Range.clip(powerF2,-1.0, 1.0);
         powerR1 = Range.clip(powerR1,-1.0, 1.0);
         powerR2 = Range.clip(powerR2,-1.0, 1.0);
 
-        F1.setPower(powerF1);
-        F2.setPower(powerF2);
-        R1.setPower(powerR1);
-        R2.setPower(powerR2);
+        if(power > .1){
+            F1.setPower(powerF1);
+            F2.setPower(powerF2);
+            R1.setPower(powerR1);
+            R2.setPower(powerR2);
+        }
+        else{
+            F1.setPower(0);
+            F2.setPower(0);
+            R1.setPower(0);
+            R2.setPower(0);
+        }
 
         if(gamepad1.left_trigger>.2){
             Winch.setPower(gamepad1.left_trigger);
