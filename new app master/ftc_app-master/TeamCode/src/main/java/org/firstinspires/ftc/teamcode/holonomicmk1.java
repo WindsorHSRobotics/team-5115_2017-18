@@ -140,17 +140,25 @@ public class holonomicmk1 extends OpMode
 
         double Pi = Math.PI/4;
 
-        powerF1 = (power * Math.cos(angle + Pi)) + gamepad1.right_stick_x;
+        /* powerF1 = (power * Math.cos(angle + Pi)) + gamepad1.right_stick_x;
         powerF2 = (power * -Math.cos(angle - Pi)) - gamepad1.right_stick_x;
         powerR1 = (power * -Math.cos(angle + Pi)) + gamepad1.right_stick_x;
-        powerR2 = (power * Math.cos(angle - Pi)) - gamepad1.right_stick_x;
+        powerR2 = (power * Math.cos(angle - Pi)) - gamepad1.right_stick_x;*/
+
+        powerF1 = (power * Math.cos(angle - Pi)) + gamepad1.right_stick_x;
+        powerF2 = (power * -Math.cos(angle + Pi)) + gamepad1.right_stick_x;
+        powerR1 = (power * -Math.cos(angle - Pi)) + gamepad1.right_stick_x;
+        powerR2 = (power * Math.cos(angle + Pi)) + gamepad1.right_stick_x;
+
 
         powerF1 = Range.clip(powerF1,-1.0, 1.0);
         powerF2 = Range.clip(powerF2,-1.0, 1.0);
         powerR1 = Range.clip(powerR1,-1.0, 1.0);
         powerR2 = Range.clip(powerR2,-1.0, 1.0);
 
-        if(power > .1){
+        telemetry.addData("right stick x: ", gamepad1.right_stick_x);
+
+        if(power > .1 || Math.abs(gamepad1.right_stick_x)>.1){
             F1.setPower(powerF1);
             F2.setPower(powerF2);
             R1.setPower(powerR1);
