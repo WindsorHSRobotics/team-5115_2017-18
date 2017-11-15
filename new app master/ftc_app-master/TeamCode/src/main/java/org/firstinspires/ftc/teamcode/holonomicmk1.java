@@ -34,8 +34,12 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
+
+import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
 import com.qualcomm.robotcore.util.Range;
+import com.qualcomm.ftccommon.ClassManagerFactory;
+import com.qualcomm.robotcore.hardware.CRServo;
 import java.math.*;
 
 /**
@@ -63,6 +67,8 @@ public class holonomicmk1 extends OpMode
     private DcMotor R1 = null;
     private DcMotor R2 = null;
     private DcMotor Winch = null;
+    private CRServo claw_top;
+    private CRServo claw_bottom;
 
 
 
@@ -79,6 +85,9 @@ public class holonomicmk1 extends OpMode
         R2 = hardwareMap.get(DcMotor.class, "R2");
         Winch = hardwareMap.get(DcMotor.class, "Winch");
 
+        claw_bottom = hardwareMap.get(CRServo.class,"claw_bottom");
+        claw_top = hardwareMap.get(CRServo.class,"claw_bottom");
+
         F1.setDirection(DcMotorSimple.Direction.FORWARD);
         F2.setDirection(DcMotorSimple.Direction.FORWARD);
         R1.setDirection(DcMotorSimple.Direction.FORWARD);
@@ -90,6 +99,7 @@ public class holonomicmk1 extends OpMode
         F2.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         R1.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         R2.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+
 
 
         // Initialize the hardware variables. Note that the strings used here as parameters
@@ -181,6 +191,18 @@ public class holonomicmk1 extends OpMode
             Winch.setPower(0);
         }
 
+        if(gamepad1.x){
+            claw_bottom.setPower(1);
+            claw_top.setPower(1);
+        }
+        else if(gamepad1.b){
+            claw_bottom.setPower(-1);
+            claw_top.setPower(-1);
+        }
+        else{
+            claw_top.setPower(0);
+            claw_bottom.setPower(0);
+        }
 
 
     }
