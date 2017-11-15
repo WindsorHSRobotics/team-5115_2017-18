@@ -86,7 +86,7 @@ public class holonomicmk1 extends OpMode
         Winch = hardwareMap.get(DcMotor.class, "Winch");
 
         claw_bottom = hardwareMap.get(CRServo.class,"claw_bottom");
-        claw_top = hardwareMap.get(CRServo.class,"claw_bottom");
+        claw_top = hardwareMap.get(CRServo.class,"claw_top");
 
         F1.setDirection(DcMotorSimple.Direction.FORWARD);
         F2.setDirection(DcMotorSimple.Direction.FORWARD);
@@ -114,6 +114,8 @@ public class holonomicmk1 extends OpMode
      */
     @Override
     public void init_loop() {
+        claw_top.setPower(-1);
+        claw_bottom.setPower(-1);
     }
 
     /*
@@ -190,19 +192,20 @@ public class holonomicmk1 extends OpMode
         else{
             Winch.setPower(0);
         }
-
         if(gamepad1.x){
-            claw_bottom.setPower(1);
-            claw_top.setPower(1);
+            claw_bottom.setPower(.5);
+            claw_top.setPower(-.5);
         }
-        else if(gamepad1.b){
-            claw_bottom.setPower(-1);
-            claw_top.setPower(-1);
+        if(gamepad1.b){
+            claw_bottom.setPower(-.5);
+            claw_top.setPower(.5);
         }
-        else{
-            claw_top.setPower(0);
+        if(gamepad1.a){
             claw_bottom.setPower(0);
+            claw_top.setPower(0);
         }
+
+
 
 
     }
