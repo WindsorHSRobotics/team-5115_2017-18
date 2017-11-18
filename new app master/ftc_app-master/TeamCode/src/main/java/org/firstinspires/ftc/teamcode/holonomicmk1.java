@@ -66,13 +66,10 @@ public class holonomicmk1 extends OpMode
     private DcMotor F2 = null;
     private DcMotor R1 = null;
     private DcMotor R2 = null;
-    private DcMotor Winch = null;
-    private CRServo claw_top;
-    private CRServo claw_bottom;
-
-
-
-    /*
+    //private DcMotor Winch = null;
+    private CRServo claw_rotate = null;
+    private DcMotor arm_rotate = null;
+       /*
      * Code to run ONCE when the driver hits INIT
      */
     @Override
@@ -83,17 +80,17 @@ public class holonomicmk1 extends OpMode
         F2 = hardwareMap.get(DcMotor.class, "F2");
         R1 = hardwareMap.get(DcMotor.class, "R1");
         R2 = hardwareMap.get(DcMotor.class, "R2");
-        Winch = hardwareMap.get(DcMotor.class, "Winch");
+       // Winch = hardwareMap.get(DcMotor.class, "Winch");
+        arm_rotate = hardwareMap.get(DcMotor.class,"arm_rotate");
+        claw_rotate = hardwareMap.get(CRServo.class,"claw_rotate");
 
-        claw_bottom = hardwareMap.get(CRServo.class,"claw_bottom");
-        claw_top = hardwareMap.get(CRServo.class,"claw_top");
 
         F1.setDirection(DcMotorSimple.Direction.FORWARD);
         F2.setDirection(DcMotorSimple.Direction.FORWARD);
         R1.setDirection(DcMotorSimple.Direction.FORWARD);
         R2.setDirection(DcMotorSimple.Direction.FORWARD);
 
-        Winch.setDirection(DcMotorSimple.Direction.FORWARD);
+        //Winch.setDirection(DcMotorSimple.Direction.FORWARD);
 
         F1.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         F2.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
@@ -114,8 +111,7 @@ public class holonomicmk1 extends OpMode
      */
     @Override
     public void init_loop() {
-        claw_top.setPower(-1);
-        claw_bottom.setPower(-1);
+
     }
 
     /*
@@ -157,8 +153,8 @@ public class holonomicmk1 extends OpMode
         powerR1 = (power * -Math.cos(angle + Pi)) + gamepad1.right_stick_x;
         powerR2 = (power * Math.cos(angle - Pi)) - gamepad1.right_stick_x;*/
 
-        powerF1 = (power * Math.cos(angle - Pi)) + gamepad1.right_stick_x;
-        powerF2 = (power * -Math.cos(angle + Pi)) + gamepad1.right_stick_x;
+        powerF2 = (power * Math.cos(angle - Pi)) + gamepad1.right_stick_x;
+        powerF1 = (power * -Math.cos(angle + Pi)) + gamepad1.right_stick_x;
         powerR1 = (power * -Math.cos(angle - Pi)) + gamepad1.right_stick_x;
         powerR2 = (power * Math.cos(angle + Pi)) + gamepad1.right_stick_x;
 
@@ -183,27 +179,20 @@ public class holonomicmk1 extends OpMode
             R2.setPower(0);
         }
 
-        if(gamepad1.left_trigger>.2){
-            Winch.setPower(gamepad1.left_trigger);
-        }
-        else if(gamepad1.right_trigger>.1){
-            Winch.setPower(-1 * gamepad1.right_trigger);
+        if(Math.abs(gamepad2.left_stick_y)>.1){
+            arm_rotate.setPower(gamepad2.left_stick_y * .5);
         }
         else{
-            Winch.setPower(0);
+            arm_rotate.setPower(0);
         }
-        if(gamepad1.x){
-            claw_bottom.setPower(.5);
-            claw_top.setPower(-.5);
+
+        if(Math.abs(gamepad2.right_stick_y)>.1){
+            claw_rotate.setPower(gamepad2.right_stick_y);
         }
-        if(gamepad1.b){
-            claw_bottom.setPower(-.5);
-            claw_top.setPower(.5);
+        else{
+            claw_rotate.setPower(0);
         }
-        if(gamepad1.a){
-            claw_bottom.setPower(0);
-            claw_top.setPower(0);
-        }
+
 
 
 
