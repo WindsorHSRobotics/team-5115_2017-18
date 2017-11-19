@@ -69,6 +69,10 @@ public class holonomicmk1 extends OpMode
     //private DcMotor Winch = null;
     private CRServo claw_rotate = null;
     private DcMotor arm_rotate = null;
+
+    public Servo claw_front_left = null;
+    public Servo claw_front_right = null;
+
        /*
      * Code to run ONCE when the driver hits INIT
      */
@@ -83,6 +87,9 @@ public class holonomicmk1 extends OpMode
        // Winch = hardwareMap.get(DcMotor.class, "Winch");
         arm_rotate = hardwareMap.get(DcMotor.class,"arm_rotate");
         claw_rotate = hardwareMap.get(CRServo.class,"claw_rotate");
+
+        claw_front_left = hardwareMap.get(Servo.class, "claw_front_left");
+        claw_front_right = hardwareMap.get(Servo.class,"claw_front_right");
 
 
         F1.setDirection(DcMotorSimple.Direction.FORWARD);
@@ -111,6 +118,8 @@ public class holonomicmk1 extends OpMode
      */
     @Override
     public void init_loop() {
+        claw_front_right.setPosition(0);
+        claw_front_left.setPosition(90);
 
     }
 
@@ -136,6 +145,8 @@ public class holonomicmk1 extends OpMode
         double powerF2;
         double powerR1;
         double powerR2;
+        double claw_open = 180;
+        double claw_close = 80;
 
 
         angle = Math.atan2(gamepad1.left_stick_x, gamepad1.left_stick_y);
@@ -180,7 +191,7 @@ public class holonomicmk1 extends OpMode
         }
 
         if(Math.abs(gamepad2.left_stick_y)>.1){
-            arm_rotate.setPower(gamepad2.left_stick_y * .5);
+            arm_rotate.setPower(-gamepad2.left_stick_y * .5);
         }
         else{
             arm_rotate.setPower(0);
@@ -191,6 +202,14 @@ public class holonomicmk1 extends OpMode
         }
         else{
             claw_rotate.setPower(0);
+        }
+        if(gamepad2.left_bumper){
+            claw_front_left.setPosition(0);
+            claw_front_right.setPosition(90);
+        }
+        else{
+            claw_front_right.setPosition(0);
+            claw_front_left.setPosition(90);
         }
 
 
