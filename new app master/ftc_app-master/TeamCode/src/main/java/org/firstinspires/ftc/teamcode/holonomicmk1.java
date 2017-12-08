@@ -104,6 +104,7 @@ public class holonomicmk1 extends OpMode
         F2.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         R1.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         R2.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        Winch.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
 
 
@@ -192,7 +193,7 @@ public class holonomicmk1 extends OpMode
         }
 
         if(Math.abs(gamepad2.left_stick_y)>.1){
-            arm_rotate.setPower(-gamepad2.left_stick_y);
+            arm_rotate.setPower(-gamepad2.left_stick_y );
         }
         else{
             arm_rotate.setPower(0);
@@ -212,9 +213,11 @@ public class holonomicmk1 extends OpMode
             claw_front_right.setPosition(0);
             claw_front_left.setPosition(90);
         }
-        if(Math.abs(gamepad1.right_stick_y)>.1){
-            Winch.setPower(gamepad1.right_stick_y);
-
+        if(gamepad2.left_trigger > .2){
+            Winch.setPower(gamepad2.left_trigger);
+        }
+        else if(gamepad2.right_trigger > .2){
+            Winch.setPower(-gamepad2.right_trigger);
         }
         else{
             Winch.setPower(0);
