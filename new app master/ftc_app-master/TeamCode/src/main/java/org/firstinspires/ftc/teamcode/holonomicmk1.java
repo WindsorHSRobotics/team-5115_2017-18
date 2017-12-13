@@ -207,11 +207,11 @@ public class holonomicmk1 extends OpMode
         }
         if(gamepad2.left_bumper){
             claw_front_left.setPosition(0);
-            claw_front_right.setPosition(90);
+            claw_front_right.setPosition(35);
         }
         else{
             claw_front_right.setPosition(0);
-            claw_front_left.setPosition(90);
+            claw_front_left.setPosition(35);
         }
         if(gamepad2.left_trigger > .2){
             Winch.setPower(gamepad2.left_trigger);
