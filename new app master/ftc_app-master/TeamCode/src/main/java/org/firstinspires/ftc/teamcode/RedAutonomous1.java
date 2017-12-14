@@ -87,6 +87,7 @@ public class RedAutonomous1 extends LinearOpMode {
 
         claw_front_right.setPosition(0);
         claw_front_left.setPosition(35);
+        Color_arm.setPosition(90);
 
         /*public void direction(float angle,float power){
             powerF2 = (power * Math.cos(angle - Pi));
@@ -106,7 +107,26 @@ public class RedAutonomous1 extends LinearOpMode {
 
 
         waitForStart();
+
+
+        /*Color_arm.setPosition(90);
+
+        F1.setPower(-.125);
+        F2.setPower(-.125);
+        R1.setPower(.125);
+        R2.setPower(.125);
+
+        sleep(500);
+        F1.setPower(0);
+        F2.setPower(0);
+        R1.setPower(0);
+        R2.setPower(0);
+        */
+
         Color_arm.setPosition(0);
+        sleep(1000);
+
+
 
 
        if(color_sensor_front.red() > color_sensor_front.blue()){
@@ -137,46 +157,60 @@ public class RedAutonomous1 extends LinearOpMode {
             sleep(250);
 
         }
-        F1.setPower(0);
-        F2.setPower(0);
-        R1.setPower(0);
-        R2.setPower(0);
+
+
+        sleep(500);
 
         F1.setPower(.25);
         F2.setPower(-.25);
         R1.setPower(.25);
         R2.setPower(-.25);
-        sleep(1600);
+        sleep(1450);
 
         F1.setPower(0);
         F2.setPower(0);
         R1.setPower(0);
         R2.setPower(0);
         sleep(250);
+
+        F1.setPower(.125);
+        F2.setPower(.125);
+        R1.setPower(-.125);
+        R2.setPower(-.125);
+
+        sleep(800);
+        F1.setPower(0);
+        F2.setPower(0);
+        R1.setPower(0);
+        R2.setPower(0);
 
         F1.setPower(-.25);
         F2.setPower(-.25);
         R1.setPower(-.25);
         R2.setPower(-.25);
-        sleep(1000);
+        sleep(1075);
 
         F1.setPower(0);
         F2.setPower(0);
         R1.setPower(0);
         R2.setPower(0);
-        sleep(250);
+        sleep(500);
 
         F1.setPower(.25);
         F2.setPower(-.25);
         R1.setPower(.25);
         R2.setPower(-.25);
-        sleep(500);
+        sleep(700);
 
         F1.setPower(0);
         F2.setPower(0);
         R1.setPower(0);
         R2.setPower(0);
         sleep(250);
+
+        
+
+
 
 
 
