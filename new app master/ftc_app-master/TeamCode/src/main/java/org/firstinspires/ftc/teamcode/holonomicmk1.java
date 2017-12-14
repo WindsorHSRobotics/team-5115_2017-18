@@ -41,20 +41,10 @@ import com.qualcomm.robotcore.util.Range;
 import com.qualcomm.ftccommon.ClassManagerFactory;
 import com.qualcomm.robotcore.hardware.CRServo;
 import java.math.*;
+import com.qualcomm.robotcore.hardware.ColorSensor;
 
-/**
- * This file contains an example of an iterative (Non-Linear) "OpMode".
- * An OpMode is a 'program' that runs in either the autonomous or the teleop period of an FTC match.
- * The names of OpModes appear on the menu of the FTC Driver Station.
- * When an selection is made from the menu, the corresponding OpMode
- * class is instantiated on the Robot Controller and executed.
- *
- * This particular OpMode just executes a basic Tank Drive Teleop for a two wheeled robot
- * It includes all the skeletal structure that all iterative OpModes contain.
- *
- * Use Android Studios to Copy this Class, and Paste it into your team's code folder with a new name.
- * Remove or comment out the @Disabled line to add this opmode to the Driver Station OpMode list
- */
+
+
 
 @TeleOp(name="holonomicmk1", group="teliop")
 
@@ -73,6 +63,7 @@ public class holonomicmk1 extends OpMode
 
     public Servo claw_front_left = null;
     public Servo claw_front_right = null;
+
 
        /*
      * Code to run ONCE when the driver hits INIT
@@ -104,6 +95,8 @@ public class holonomicmk1 extends OpMode
         F2.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         R1.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         R2.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        Winch.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+
 
 
 
@@ -192,7 +185,7 @@ public class holonomicmk1 extends OpMode
         }
 
         if(Math.abs(gamepad2.left_stick_y)>.1){
-            arm_rotate.setPower(-gamepad2.left_stick_y);
+            arm_rotate.setPower(-gamepad2.left_stick_y );
         }
         else{
             arm_rotate.setPower(0);
@@ -206,15 +199,17 @@ public class holonomicmk1 extends OpMode
         }
         if(gamepad2.left_bumper){
             claw_front_left.setPosition(0);
-            claw_front_right.setPosition(90);
+            claw_front_right.setPosition(35);
         }
         else{
             claw_front_right.setPosition(0);
-            claw_front_left.setPosition(90);
+            claw_front_left.setPosition(35);
         }
-        if(Math.abs(gamepad1.right_stick_y)>.1){
-            Winch.setPower(gamepad1.right_stick_y);
-
+        if(gamepad2.left_trigger > .2){
+            Winch.setPower(gamepad2.left_trigger);
+        }
+        else if(gamepad2.right_trigger > .2){
+            Winch.setPower(-gamepad2.right_trigger);
         }
         else{
             Winch.setPower(0);
