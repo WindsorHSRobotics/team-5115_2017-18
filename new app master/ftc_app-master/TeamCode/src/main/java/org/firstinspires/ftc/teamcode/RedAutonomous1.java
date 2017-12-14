@@ -1,4 +1,5 @@
 package org.firstinspires.ftc.teamcode;
+import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
@@ -22,7 +23,7 @@ import android.view.View;
 /**
  * Created by Robo-Admin on 12/13/2017.
  */
-@TeleOp(name="Red Autonomous 1", group="autonomous")
+@Autonomous(name="Red Autonomous 1", group="autonomous")
 public class RedAutonomous1 extends LinearOpMode {
 
     private DcMotor F1 = null;
@@ -38,7 +39,7 @@ public class RedAutonomous1 extends LinearOpMode {
     public Servo claw_front_right = null;
     public Servo Color_arm = null;
     public ColorSensor color_sensor_front = null;
-    public ColorSensor color_sensor_rear = null;
+
     double power;
     double angle;
 
@@ -67,7 +68,7 @@ public class RedAutonomous1 extends LinearOpMode {
         Color_arm = hardwareMap.get(Servo.class,"color_arm");
 
         color_sensor_front = hardwareMap.get(ColorSensor.class,"color_sensor_front");
-        color_sensor_rear = hardwareMap.get(ColorSensor.class,"color_sensor_rear");
+
 
 
 
@@ -107,7 +108,8 @@ public class RedAutonomous1 extends LinearOpMode {
         waitForStart();
         Color_arm.setPosition(0);
 
-       /* if(color_sensor_front.red() > color_sensor_rear.red()){
+
+       if(color_sensor_front.red() > color_sensor_front.blue()){
             F1.setPower(.25);
             F2.setPower(-.25);
             R1.setPower(.25);
@@ -134,7 +136,7 @@ public class RedAutonomous1 extends LinearOpMode {
             R2.setPower(-.25);
             sleep(250);
 
-        }*/
+        }
         F1.setPower(0);
         F2.setPower(0);
         R1.setPower(0);
