@@ -129,7 +129,7 @@ public class RedAutonomous1 extends LinearOpMode {
 
 
 
-       if(color_sensor_front.red() > color_sensor_front.blue()){
+       if(color_sensor_front.red() < color_sensor_front.blue()){
             F1.setPower(.25);
             F2.setPower(-.25);
             R1.setPower(.25);
@@ -154,7 +154,7 @@ public class RedAutonomous1 extends LinearOpMode {
             F2.setPower(-.25);
             R1.setPower(.25);
             R2.setPower(-.25);
-            sleep(250);
+            sleep(275);
 
         }
 
@@ -208,7 +208,7 @@ public class RedAutonomous1 extends LinearOpMode {
         R2.setPower(0);
         sleep(250);
 
-        
+
 
 
 

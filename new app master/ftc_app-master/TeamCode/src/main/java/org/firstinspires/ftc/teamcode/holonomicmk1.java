@@ -63,6 +63,7 @@ public class holonomicmk1 extends OpMode
 
     public Servo claw_front_left = null;
     public Servo claw_front_right = null;
+    private Servo Color_Arm = null;
 
 
        /*
@@ -82,7 +83,7 @@ public class holonomicmk1 extends OpMode
 
         claw_front_left = hardwareMap.get(Servo.class, "claw_front_left");
         claw_front_right = hardwareMap.get(Servo.class,"claw_front_right");
-
+        Color_Arm = hardwareMap.get(Servo.class,"color_arm");
 
         F1.setDirection(DcMotorSimple.Direction.FORWARD);
         F2.setDirection(DcMotorSimple.Direction.FORWARD);
@@ -114,6 +115,7 @@ public class holonomicmk1 extends OpMode
     public void init_loop() {
         claw_front_right.setPosition(0);
         claw_front_left.setPosition(90);
+        Color_Arm.setPosition(60);
 
     }
 
