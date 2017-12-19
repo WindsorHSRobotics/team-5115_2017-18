@@ -37,6 +37,7 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
+import com.qualcomm.robotcore.util.Hardware;
 import com.qualcomm.robotcore.util.Range;
 import com.qualcomm.ftccommon.ClassManagerFactory;
 import com.qualcomm.robotcore.hardware.CRServo;
@@ -64,6 +65,8 @@ public class holonomicmk1 extends OpMode
     public Servo claw_front_left = null;
     public Servo claw_front_right = null;
     private Servo Color_Arm = null;
+    private Servo claw_rear_left = null;
+    private Servo claw_rear_right = null;
 
 
        /*
@@ -84,6 +87,9 @@ public class holonomicmk1 extends OpMode
         claw_front_left = hardwareMap.get(Servo.class, "claw_front_left");
         claw_front_right = hardwareMap.get(Servo.class,"claw_front_right");
         Color_Arm = hardwareMap.get(Servo.class,"color_arm");
+        claw_rear_left = hardwareMap.get(Servo.class,"claw_rear_left");
+        claw_rear_right = hardwareMap.get(Servo.class,"claw_rear_right");
+
 
         F1.setDirection(DcMotorSimple.Direction.FORWARD);
         F2.setDirection(DcMotorSimple.Direction.FORWARD);
@@ -114,7 +120,9 @@ public class holonomicmk1 extends OpMode
     @Override
     public void init_loop() {
         claw_front_right.setPosition(0);
-        claw_front_left.setPosition(90);
+        claw_front_left.setPosition(35);
+        claw_rear_right.setPosition(0);
+        claw_rear_left.setPosition(35);
         Color_Arm.setPosition(60);
 
     }
@@ -206,6 +214,14 @@ public class holonomicmk1 extends OpMode
         else{
             claw_front_right.setPosition(0);
             claw_front_left.setPosition(35);
+        }
+        if(gamepad2.right_bumper){
+            claw_rear_left.setPosition(0);
+            claw_rear_right.setPosition(35);
+        }
+        else{
+            claw_rear_left.setPosition(35);
+            claw_rear_right.setPosition(0);
         }
         if(gamepad2.left_trigger > .2){
             Winch.setPower(gamepad2.left_trigger);
