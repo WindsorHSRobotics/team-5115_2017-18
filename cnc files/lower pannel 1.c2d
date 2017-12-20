@@ -1,0 +1,69 @@
+{
+    "CIRCLE_OBJECTS": [
+    ],
+    "CURVE_OBJECTS": [
+    ],
+    "DOCUMENT_VALUES": {
+        "BACKGROUND_IMAGE": "AAAAAA==",
+        "BACKGROUND_OPACITY": 0.5,
+        "BACKGROUND_POSITION_X": 0,
+        "BACKGROUND_POSITION_Y": 0,
+        "BACKGROUND_ROTATION": 0,
+        "BACKGROUND_SCALE": 1,
+        "BACKGROUND_VISIBLE": false,
+        "DISPLAYMM": false,
+        "HEIGHT": 609.5999999999999,
+        "MACHINE": "Shapeoko XXL",
+        "MATERIAL": "Acrylic",
+        "RETRACT": 10,
+        "THICKNESS": 1.6001999999999998,
+        "WIDTH": 609.5999999999999,
+        "ZERO_X": 0,
+        "ZERO_Y": 0,
+        "ZERO_Z": 0,
+        "grid_enabled": true,
+        "grid_spacing": 5,
+        "version": 1
+    },
+    "RECT_OBJECTS": [
+    ],
+    "REGULAR_POLYGON_OBJECTS": [
+    ],
+    "TEXT_OBJECTS": [
+    ],
+    "TOOLPATH_OBJECTS": [
+        {
+            "automatic_parameters": true,
+            "elements": [
+            ],
+            "enabled": true,
+            "end_depth": -1.6001999999999998,
+            "name": "Toolpath 1",
+            "ofset_dir": -1,
+            "speeds": {
+                "feedrate": 495.29999999999995,
+                "plungerate": 123.82499999999999,
+                "rpm": 9375
+            },
+            "start_depth": 0,
+            "stepdown": 0.7366,
+            "stepover": 1.4223999999999999,
+            "tab_height": 5,
+            "tab_width": 8,
+            "tolerance": 0.01,
+            "tool": {
+                "angle": 0,
+                "corner_radius": 0,
+                "diameter": 3.175,
+                "display_mm": false,
+                "flutes": 2,
+                "length": 19.049999999999997,
+                "name": "",
+                "number": 102,
+                "overall_length": 0,
+                "uuid": "{00000000-0000-0000-0000-000000000102}"
+            },
+            "uuid": "{e000fa5e-78a0-4f68-bf91-87c12cd3a0ce}"
+        }
+    ]
+}
