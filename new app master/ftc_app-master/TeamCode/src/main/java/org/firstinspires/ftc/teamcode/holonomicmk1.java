@@ -151,6 +151,7 @@ public class holonomicmk1 extends OpMode
         double powerR2;
         double claw_open = 180;
         double claw_close = 80;
+        Color_Arm.setPosition(60);
 
 
         angle = Math.atan2(gamepad1.left_stick_x, gamepad1.left_stick_y);
