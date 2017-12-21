@@ -18,14 +18,28 @@
         "RETRACT": 10,
         "THICKNESS": 1.6001999999999998,
         "WIDTH": 609.5999999999999,
-        "ZERO_X": 0,
-        "ZERO_Y": 0,
+        "ZERO_X": 304.79999999999995,
+        "ZERO_Y": 304.79999999999995,
         "ZERO_Z": 0,
         "grid_enabled": true,
         "grid_spacing": 5,
         "version": 1
     },
     "RECT_OBJECTS": [
+        {
+            "corner_type": 1,
+            "group_id": [
+            ],
+            "height": 279.4,
+            "id": "{0a9a720e-bfd0-4e69-9938-e5a2546cfae7}",
+            "position": [
+                299.95368304009446,
+                151.06651140035453
+            ],
+            "radius": 12.7,
+            "rotation": 0,
+            "width": 381
+        }
     ],
     "REGULAR_POLYGON_OBJECTS": [
     ],
@@ -41,13 +55,13 @@
             "name": "Toolpath 1",
             "ofset_dir": -1,
             "speeds": {
-                "feedrate": 495.29999999999995,
-                "plungerate": 123.82499999999999,
+                "feedrate": 495.2999999999998,
+                "plungerate": 123.82499999999995,
                 "rpm": 9375
             },
             "start_depth": 0,
-            "stepdown": 0.7366,
-            "stepover": 1.4223999999999999,
+            "stepdown": 0.7450211760480693,
+            "stepover": 1.42875,
             "tab_height": 5,
             "tab_width": 8,
             "tolerance": 0.01,
@@ -64,6 +78,46 @@
                 "uuid": "{00000000-0000-0000-0000-000000000102}"
             },
             "uuid": "{e000fa5e-78a0-4f68-bf91-87c12cd3a0ce}"
+        },
+        {
+            "automatic_parameters": true,
+            "elements": [
+                {
+                    "tab_index": [
+                    ],
+                    "tab_u": [
+                    ],
+                    "uuid": "{0a9a720e-bfd0-4e69-9938-e5a2546cfae7}"
+                }
+            ],
+            "enabled": true,
+            "end_depth": -10.0076,
+            "name": "Robot Baseplate 5115",
+            "ofset_dir": 1,
+            "speeds": {
+                "feedrate": 540.8632950193979,
+                "plungerate": 90.14388250323299,
+                "rpm": 4965
+            },
+            "start_depth": 0,
+            "stepdown": 4.554449598185747,
+            "stepover": 2.8575,
+            "tab_height": 5,
+            "tab_width": 8,
+            "tolerance": 0.01,
+            "tool": {
+                "angle": 0,
+                "corner_radius": 0,
+                "diameter": 6.35,
+                "display_mm": false,
+                "flutes": 3,
+                "length": 9.524999999999999,
+                "name": "",
+                "number": 201,
+                "overall_length": 38.099999999999994,
+                "uuid": "{00000000-0000-0000-0000-000000000201}"
+            },
+            "uuid": "{fd2ef8c9-d637-4362-8334-906aa6824913}"
         }
     ]
 }
