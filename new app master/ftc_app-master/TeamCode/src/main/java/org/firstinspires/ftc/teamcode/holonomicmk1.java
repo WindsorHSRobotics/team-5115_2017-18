@@ -123,7 +123,7 @@ public class holonomicmk1 extends OpMode
         claw_front_left.setPosition(35);
         claw_rear_right.setPosition(0);
         claw_rear_left.setPosition(35);
-        Color_Arm.setPosition(60);
+        Color_Arm.setPosition(0);
 
     }
 
@@ -151,7 +151,7 @@ public class holonomicmk1 extends OpMode
         double powerR2;
         double claw_open = 180;
         double claw_close = 80;
-        Color_Arm.setPosition(60);
+        Color_Arm.setPosition(.5);
 
 
         angle = Math.atan2(gamepad1.left_stick_x, gamepad1.left_stick_y);
@@ -195,8 +195,16 @@ public class holonomicmk1 extends OpMode
             R2.setPower(0);
         }
 
+        double arm_rotate_speed = .5;
+        if(gamepad2.a){
+            arm_rotate_speed = .8;
+        }
+        else{
+            arm_rotate_speed = .25;
+        }
+
         if(Math.abs(gamepad2.left_stick_y)>.1){
-            arm_rotate.setPower(-gamepad2.left_stick_y );
+            arm_rotate.setPower(-gamepad2.left_stick_y * arm_rotate_speed);
         }
         else{
             arm_rotate.setPower(0);
