@@ -129,8 +129,8 @@ public class RedAutonomous1 extends LinearOpMode {
 
 
 
-       if(color_sensor_front.red() < color_sensor_front.blue()){
-            F1.setPower(.25);
+       if(color_sensor_front.red() < color_sensor_front.blue()){ //checks if the jewel in front of the sensor is red or blue
+            F1.setPower(.25);//moves forward if ball is blue
             F2.setPower(-.25);
             R1.setPower(.25);
             R2.setPower(-.25);
@@ -140,18 +140,18 @@ public class RedAutonomous1 extends LinearOpMode {
             F2.setPower(.25);
             R1.setPower(-.25);
             R2.setPower(.25);
-            sleep(250);
+            sleep(250);//reverses back to starting starting position
 
         }
         else{
             F1.setPower(-.25);
-            F2.setPower(.25);
+            F2.setPower(.25);//reverses if ball is red to knock off blue
             R1.setPower(-.25);
             R2.setPower(.25);
             sleep(250);
             Color_arm.setPosition(90);
             F1.setPower(.25);
-            F2.setPower(-.25);
+            F2.setPower(-.25);// moves forward back to starting position
             R1.setPower(.25);
             R2.setPower(-.25);
             sleep(275);
@@ -165,10 +165,10 @@ public class RedAutonomous1 extends LinearOpMode {
         F2.setPower(-.25);
         R1.setPower(.25);
         R2.setPower(-.25);
-        sleep(1450);
+        sleep(1450);// moves forward off balence board
 
         F1.setPower(0);
-        F2.setPower(0);
+        F2.setPower(0);//stops
         R1.setPower(0);
         R2.setPower(0);
         sleep(250);
@@ -176,7 +176,7 @@ public class RedAutonomous1 extends LinearOpMode {
         F1.setPower(.125);
         F2.setPower(.125);
         R1.setPower(-.125);
-        R2.setPower(-.125);
+        R2.setPower(-.125);//moves sideways to have space to turn
 
         sleep(800);
         F1.setPower(0);
@@ -187,7 +187,7 @@ public class RedAutonomous1 extends LinearOpMode {
         F1.setPower(-.25);
         F2.setPower(-.25);
         R1.setPower(-.25);
-        R2.setPower(-.25);
+        R2.setPower(-.25);//rotates to face cryptobox
         sleep(1075);
 
         F1.setPower(0);
@@ -197,14 +197,14 @@ public class RedAutonomous1 extends LinearOpMode {
         sleep(500);
 
         F1.setPower(.25);
-        F2.setPower(-.25);
+        F2.setPower(-.25);//drives forward to score
         R1.setPower(.25);
         R2.setPower(-.25);
         sleep(700);
 
         F1.setPower(0);
         F2.setPower(0);
-        R1.setPower(0);
+        R1.setPower(0);//stops
         R2.setPower(0);
         sleep(250);
 

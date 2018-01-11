@@ -154,28 +154,23 @@ public class holonomicmk1 extends OpMode
         Color_Arm.setPosition(.5);
 
 
-        angle = Math.atan2(gamepad1.left_stick_x, gamepad1.left_stick_y);
-        telemetry.addData("angle: ", angle);
+        angle = Math.atan2(gamepad1.left_stick_x, gamepad1.left_stick_y);//finds angle of joystick
+        telemetry.addData("angle: ", angle);//adds telemetry for troubleshooting code
 
         leftstick_x_sqr = gamepad1.left_stick_x * gamepad1.left_stick_x;
         leftstick_y_sqr = gamepad1.left_stick_y * gamepad1.left_stick_y;
-        power = Math.sqrt(leftstick_x_sqr + leftstick_y_sqr);
+        power = Math.sqrt(leftstick_x_sqr + leftstick_y_sqr);//finds relative power of joystick using pythagorean theorem
         telemetry.addData("power: ", power);
 
-        double Pi = Math.PI/4;
-
-        /* powerF1 = (power * Math.cos(angle + Pi)) + gamepad1.right_stick_x;
-        powerF2 = (power * -Math.cos(angle - Pi)) - gamepad1.right_stick_x;
-        powerR1 = (power * -Math.cos(angle + Pi)) + gamepad1.right_stick_x;
-        powerR2 = (power * Math.cos(angle - Pi)) - gamepad1.right_stick_x;*/
+        double Pi = Math.PI/4;//to avoid having to type this everytime
 
         powerF2 = (power * Math.cos(angle - Pi)) + gamepad1.right_stick_x;
-        powerF1 = (power * -Math.cos(angle + Pi)) + gamepad1.right_stick_x;
-        powerR1 = (power * -Math.cos(angle - Pi)) + gamepad1.right_stick_x;
+        powerF1 = (power * -Math.cos(angle + Pi)) + gamepad1.right_stick_x;//assigning each motor power based on calculated sin wave
+        powerR1 = (power * -Math.cos(angle - Pi)) + gamepad1.right_stick_x;//right stick is used for y axis rotation
         powerR2 = (power * Math.cos(angle + Pi)) + gamepad1.right_stick_x;
 
 
-        powerF1 = Range.clip(powerF1,-1.0, 1.0);
+        powerF1 = Range.clip(powerF1,-1.0, 1.0);//clips values to avoid program errors
         powerF2 = Range.clip(powerF2,-1.0, 1.0);
         powerR1 = Range.clip(powerR1,-1.0, 1.0);
         powerR2 = Range.clip(powerR2,-1.0, 1.0);
@@ -184,14 +179,14 @@ public class holonomicmk1 extends OpMode
 
         if(power > .1 || Math.abs(gamepad1.right_stick_x)>.1){
             F1.setPower(powerF1);
-            F2.setPower(powerF2);
+            F2.setPower(powerF2);//applies motor power if joystick is moved
             R1.setPower(powerR1);
             R2.setPower(powerR2);
         }
         else{
             F1.setPower(0);
             F2.setPower(0);
-            R1.setPower(0);
+            R1.setPower(0);//stops robot when no joystick is pressed
             R2.setPower(0);
         }
 
