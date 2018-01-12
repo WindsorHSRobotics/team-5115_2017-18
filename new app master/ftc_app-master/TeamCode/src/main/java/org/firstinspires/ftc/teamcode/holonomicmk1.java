@@ -186,7 +186,7 @@ public class holonomicmk1 extends OpMode
         else{
             F1.setPower(0);
             F2.setPower(0);
-            R1.setPower(0);//stops robot when no joystick is pressed
+            R1.setPower(0);//stops robot when no joystick is pressed 
             R2.setPower(0);
         }
 
@@ -228,10 +228,10 @@ public class holonomicmk1 extends OpMode
             claw_rear_right.setPosition(0);
         }
         if(gamepad2.left_trigger > .2){
-            Winch.setPower(gamepad2.left_trigger);
+            Winch.setPower(gamepad2.left_trigger * .5);
         }
         else if(gamepad2.right_trigger > .2){
-            Winch.setPower(-gamepad2.right_trigger);
+            Winch.setPower(-gamepad2.right_trigger * .5);
         }
         else{
             Winch.setPower(0);
