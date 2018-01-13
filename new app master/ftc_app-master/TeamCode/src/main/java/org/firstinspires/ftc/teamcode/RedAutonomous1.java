@@ -86,7 +86,7 @@ public class RedAutonomous1 extends LinearOpMode {
         Winch.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
         claw_front_right.setPosition(0);
-        claw_front_left.setPosition(35);
+        claw_front_left.setPosition(35.);
         Color_arm.setPosition(90);
 
         /*public void direction(float angle,float power){
@@ -107,6 +107,7 @@ public class RedAutonomous1 extends LinearOpMode {
 
 
         waitForStart();
+        telemetry.addData("version","1.0");
 
 
         /*Color_arm.setPosition(90);

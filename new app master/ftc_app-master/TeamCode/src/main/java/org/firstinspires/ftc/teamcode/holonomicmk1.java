@@ -111,7 +111,7 @@ public class holonomicmk1 extends OpMode
         // to 'get' must correspond to the names assigned during the robot configuration
         // step (using the FTC Robot Controller app on the phone).
 
-        telemetry.addData("Status", "Initialized");
+        telemetry.addData("Status", "Initialized v1");
     }
 
     /*
