@@ -1,0 +1,158 @@
+{
+    "CIRCLE_OBJECTS": [
+    ],
+    "CURVE_OBJECTS": [
+    ],
+    "DOCUMENT_VALUES": {
+        "BACKGROUND_IMAGE": "AAAAAA==",
+        "BACKGROUND_OPACITY": 0.5,
+        "BACKGROUND_POSITION_X": 0,
+        "BACKGROUND_POSITION_Y": 0,
+        "BACKGROUND_ROTATION": 0,
+        "BACKGROUND_SCALE": 1,
+        "BACKGROUND_VISIBLE": false,
+        "DISPLAYMM": false,
+        "HEIGHT": 609.5999999999999,
+        "MACHINE": "Shapeoko XXL",
+        "MATERIAL": "Acrylic",
+        "RETRACT": 10,
+        "THICKNESS": 3.175,
+        "WIDTH": 609.5999999999999,
+        "ZERO_X": 304.79999999999995,
+        "ZERO_Y": 304.79999999999995,
+        "ZERO_Z": 0,
+        "grid_enabled": true,
+        "grid_spacing": 5,
+        "version": 1
+    },
+    "RECT_OBJECTS": [
+        {
+            "corner_type": 1,
+            "group_id": [
+            ],
+            "height": 101.6,
+            "id": "{d153af0d-0e7b-4d8c-9c7e-fc08921c346e}",
+            "position": [
+                300.2107827832303,
+                73.94529830802637
+            ],
+            "radius": 12.7,
+            "rotation": 0,
+            "width": 304.79999999999995
+        },
+        {
+            "corner_type": 1,
+            "group_id": [
+            ],
+            "height": 101.6,
+            "id": "{781b93e9-e920-44af-b78c-8e6fd6c85dc0}",
+            "position": [
+                301.5494080957831,
+                202.8735706924757
+            ],
+            "radius": 12.7,
+            "rotation": 0,
+            "width": 304.79999999999995
+        },
+        {
+            "corner_type": 0,
+            "group_id": [
+            ],
+            "height": 304.79999999999995,
+            "id": "{a88b2628-a15a-4fe8-a822-1ad297aeb41a}",
+            "position": [
+                301.90439999999995,
+                151.8412
+            ],
+            "radius": 15.011399999999998,
+            "rotation": 0,
+            "width": 457.2
+        }
+    ],
+    "REGULAR_POLYGON_OBJECTS": [
+    ],
+    "TEXT_OBJECTS": [
+    ],
+    "TOOLPATH_OBJECTS": [
+        {
+            "automatic_parameters": true,
+            "elements": [
+                {
+                    "tab_index": [
+                    ],
+                    "tab_u": [
+                    ],
+                    "uuid": "{781b93e9-e920-44af-b78c-8e6fd6c85dc0}"
+                }
+            ],
+            "enabled": true,
+            "end_depth": -3.175,
+            "name": "Numtag 1",
+            "ofset_dir": 1,
+            "speeds": {
+                "feedrate": 540.8632950193979,
+                "plungerate": 90.14388250323299,
+                "rpm": 4965
+            },
+            "start_depth": 0,
+            "stepdown": 4.554449598185747,
+            "stepover": 2.8575,
+            "tab_height": 5,
+            "tab_width": 8,
+            "tolerance": 0.01,
+            "tool": {
+                "angle": 0,
+                "corner_radius": 0,
+                "diameter": 6.35,
+                "display_mm": false,
+                "flutes": 3,
+                "length": 9.524999999999999,
+                "name": "",
+                "number": 201,
+                "overall_length": 38.099999999999994,
+                "uuid": "{00000000-0000-0000-0000-000000000201}"
+            },
+            "uuid": "{ffc6f5e4-06b4-421a-adc6-076423fbf815}"
+        },
+        {
+            "automatic_parameters": true,
+            "elements": [
+                {
+                    "tab_index": [
+                    ],
+                    "tab_u": [
+                    ],
+                    "uuid": "{d153af0d-0e7b-4d8c-9c7e-fc08921c346e}"
+                }
+            ],
+            "enabled": true,
+            "end_depth": -3.175,
+            "name": "Numtag 2",
+            "ofset_dir": 1,
+            "speeds": {
+                "feedrate": 540.8632950193979,
+                "plungerate": 90.14388250323299,
+                "rpm": 4965
+            },
+            "start_depth": 0,
+            "stepdown": 4.554449598185747,
+            "stepover": 2.8575,
+            "tab_height": 5,
+            "tab_width": 8,
+            "tolerance": 0.01,
+            "tool": {
+                "angle": 0,
+                "corner_radius": 0,
+                "diameter": 6.35,
+                "display_mm": false,
+                "flutes": 3,
+                "length": 9.524999999999999,
+                "name": "",
+                "number": 201,
+                "overall_length": 38.099999999999994,
+                "uuid": "{00000000-0000-0000-0000-000000000201}"
+            },
+            "uuid": "{47e14ecb-534d-4db8-8a77-0179c87b1709}"
+        }
+    ]
+}
