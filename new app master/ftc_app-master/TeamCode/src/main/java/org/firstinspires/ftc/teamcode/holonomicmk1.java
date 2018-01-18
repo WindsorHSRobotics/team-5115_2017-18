@@ -123,7 +123,7 @@ public class holonomicmk1 extends OpMode
         claw_front_left.setPosition(35);
         claw_rear_right.setPosition(0);
         claw_rear_left.setPosition(35);
-        Color_Arm.setPosition(0);
+        Color_Arm.setPosition(90);
 
     }
 
@@ -200,9 +200,11 @@ public class holonomicmk1 extends OpMode
 
         if(Math.abs(gamepad2.left_stick_y)>.1){
             arm_rotate.setPower(-gamepad2.left_stick_y * arm_rotate_speed);
+            Winch.setPower(-gamepad2.left_stick_y * arm_rotate_speed);
         }
         else{
             arm_rotate.setPower(0);
+            Winch.setPower(0);
         }
 
         if(Math.abs(gamepad2.right_stick_y)>.1){
@@ -227,15 +229,7 @@ public class holonomicmk1 extends OpMode
             claw_rear_left.setPosition(35);
             claw_rear_right.setPosition(0);
         }
-        if(gamepad2.left_trigger > .2){
-            Winch.setPower(gamepad2.left_trigger * .5);
-        }
-        else if(gamepad2.right_trigger > .2){
-            Winch.setPower(-gamepad2.right_trigger * .5);
-        }
-        else{
-            Winch.setPower(0);
-        }
+
 
 
 

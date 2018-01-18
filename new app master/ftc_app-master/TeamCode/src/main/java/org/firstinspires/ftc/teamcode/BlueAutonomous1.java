@@ -23,8 +23,9 @@ import android.view.View;
 /**
  * Created by Robo-Admin on 12/13/2017.
  */
-@Autonomous(name="Blue Autonomous 1", group="autonomous")
-public class RedAutonomous1 extends LinearOpMode {
+@Autonomous(name="Red Autonomous 1", group="autonomous")
+public class BlueAutonomous1 extends LinearOpMode {
+    //test
 
     private DcMotor F1 = null;
     private DcMotor F2 = null;
@@ -86,7 +87,7 @@ public class RedAutonomous1 extends LinearOpMode {
         Winch.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
         claw_front_right.setPosition(0);
-        claw_front_left.setPosition(35.);
+        claw_front_left.setPosition(35);
         Color_arm.setPosition(90);
 
         /*public void direction(float angle,float power){
@@ -107,7 +108,7 @@ public class RedAutonomous1 extends LinearOpMode {
 
 
         waitForStart();
-        telemetry.addData("version","1.0");
+        telemetry.addData("version","1.4");
 
 
         /*Color_arm.setPosition(90);
@@ -130,42 +131,46 @@ public class RedAutonomous1 extends LinearOpMode {
 
 
 
-       if(color_sensor_front.red() > color_sensor_front.blue()){ //checks if the jewel in front of the sensor is red or blue
-            F1.setPower(.25);//moves forward if ball is blue
-            F2.setPower(-.25);
-            R1.setPower(.25);
-            R2.setPower(-.25);
-            sleep(250);
-            Color_arm.setPosition(90);
+       if(color_sensor_front.red() > color_sensor_front.blue()){
             F1.setPower(-.25);
             F2.setPower(.25);
             R1.setPower(-.25);
             R2.setPower(.25);
-            sleep(350);//reverses back to starting starting position
+            sleep(150);//reverses back to starting starting position
+            Color_arm.setPosition(90);
+            F1.setPower(.25);
+            F2.setPower(-.25);
+            R1.setPower(.25);
+            R2.setPower(-.25);
+            sleep(200);
 
         }
-        else{
+        else if(color_sensor_front.red() < color_sensor_front.blue()){
+            F1.setPower(.25);
+            F2.setPower(-.25);//reverses if ball is red to knock off blue
+            R1.setPower(.25);
+            R2.setPower(-.25);
+            sleep(150);
+            Color_arm.setPosition(90);
             F1.setPower(-.25);
-            F2.setPower(.25);//reverses if ball is red to knock off blue
+            F2.setPower(.25);// moves forward back to starting position
             R1.setPower(-.25);
             R2.setPower(.25);
             sleep(250);
-            Color_arm.setPosition(90);
-            F1.setPower(.25);
-            F2.setPower(-.25);// moves forward back to starting position
-            R1.setPower(.25);
-            R2.setPower(-.25);
-            sleep(275);
 
+        }
+        else{
+            sleep(10);
+            Color_arm.setPosition(90);
         }
 
 
 
 
-        F1.setPower(.25);
-        F2.setPower(-.25);
-        R1.setPower(.25);
-        R2.setPower(-.25);
+        F1.setPower(-.25);
+        F2.setPower(.25);
+        R1.setPower(-.25);
+        R2.setPower(.25);
         sleep(1750);// moves forward off balence board
 
         F1.setPower(0);
@@ -208,7 +213,6 @@ public class RedAutonomous1 extends LinearOpMode {
         R1.setPower(0);//stops
         R2.setPower(0);
         sleep(250);
-
         claw_front_left.setPosition(0);
         claw_front_right.setPosition(35);
 
