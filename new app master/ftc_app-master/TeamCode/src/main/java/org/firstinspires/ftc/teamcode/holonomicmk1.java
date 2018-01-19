@@ -60,7 +60,8 @@ public class holonomicmk1 extends OpMode
     //private DcMotor Winch = null;
     private CRServo claw_rotate = null;
     private DcMotor arm_rotate = null;
-    private DcMotor Winch = null;
+    private DcMotor arm_rotate2 = null;
+    private DcMotor extend = null;
 
     public Servo claw_front_left = null;
     public Servo claw_front_right = null;
@@ -80,9 +81,10 @@ public class holonomicmk1 extends OpMode
         F2 = hardwareMap.get(DcMotor.class, "F2");
         R1 = hardwareMap.get(DcMotor.class, "R1");
         R2 = hardwareMap.get(DcMotor.class, "R2");
-        Winch = hardwareMap.get(DcMotor.class, "Winch");
+        arm_rotate2 = hardwareMap.get(DcMotor.class, "arm_rotate2");
         arm_rotate = hardwareMap.get(DcMotor.class,"arm_rotate");
         claw_rotate = hardwareMap.get(CRServo.class,"claw_rotate");
+        extend = hardwareMap.get(DcMotor.class,"extend");
 
         claw_front_left = hardwareMap.get(Servo.class, "claw_front_left");
         claw_front_right = hardwareMap.get(Servo.class,"claw_front_right");
@@ -102,7 +104,7 @@ public class holonomicmk1 extends OpMode
         F2.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         R1.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         R2.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        Winch.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        arm_rotate.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
 
 
@@ -200,12 +202,23 @@ public class holonomicmk1 extends OpMode
 
         if(Math.abs(gamepad2.left_stick_y)>.1){
             arm_rotate.setPower(-gamepad2.left_stick_y * arm_rotate_speed);
-            Winch.setPower(-gamepad2.left_stick_y * arm_rotate_speed);
+            arm_rotate2.setPower(-gamepad2.left_stick_y * arm_rotate_speed);
         }
         else{
             arm_rotate.setPower(0);
-            Winch.setPower(0);
+            arm_rotate2.setPower(0);
         }
+
+        if(gamepad2.left_trigger > .1){
+            extend.setPower(gamepad2.left_trigger * .5);
+        }
+        else if(gamepad2.right_trigger > .1) {
+            extend.setPower(-gamepad2.right_trigger * .5);
+        }
+        else{
+            extend.setPower(0);
+        }
+
 
         if(Math.abs(gamepad2.right_stick_y)>.1){
             claw_rotate.setPower(gamepad2.right_stick_y);
