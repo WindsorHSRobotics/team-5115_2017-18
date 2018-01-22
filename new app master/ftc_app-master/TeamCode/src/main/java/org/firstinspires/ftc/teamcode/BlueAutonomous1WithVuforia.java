@@ -212,7 +212,7 @@ public class BlueAutonomous1WithVuforia extends LinearOpMode {
             F2.setPower(.25);
             R1.setPower(-.25);
             R2.setPower(.25);
-            sleep(1750);// moves forward off balence board
+            sleep(lrc);// moves forward off balence board
 
             F1.setPower(0);
             F2.setPower(0);//stops
