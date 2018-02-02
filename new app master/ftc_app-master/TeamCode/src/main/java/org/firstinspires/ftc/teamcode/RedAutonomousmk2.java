@@ -107,7 +107,7 @@ public class RedAutonomousmk2 extends LinearOpMode {
 
         waitForStart();
 
-        F1.setPower(.125); //strafe right
+        F1.setPower(.125); //strafe left
         F2.setPower(.125);
         R1.setPower(-.125);
         R2.setPower(-.125);
@@ -131,7 +131,7 @@ public class RedAutonomousmk2 extends LinearOpMode {
 
         sleep(1000);
 
-        if(color_sensor_front.red() > color_sensor_front.blue()){ //if red is on left
+        if(color_sensor_front.red() < color_sensor_front.blue()){ //if red is on left
 
             telemetry.addData("color = ","red");
             telemetry.update();
@@ -161,7 +161,7 @@ public class RedAutonomousmk2 extends LinearOpMode {
             R2.setPower(0);
 
         }
-        else if(color_sensor_front.red() < color_sensor_front.blue()){ //if red is on right
+        else if(color_sensor_front.red() > color_sensor_front.blue()){ //if red is on right
 
             telemetry.addData("color = ","blue");
             telemetry.update();
@@ -204,19 +204,19 @@ public class RedAutonomousmk2 extends LinearOpMode {
 
         RelicRecoveryVuMark vuMark = RelicRecoveryVuMark.from(relicTemplate); //read the page
 
-        if(vuMark == RelicRecoveryVuMark.LEFT) lrc = 2000; //aim for the left column
-        else if(vuMark == RelicRecoveryVuMark.CENTER) lrc = 2520; //aim for the middle column
-        else if(vuMark == RelicRecoveryVuMark.RIGHT) lrc = 3000; //aim for the right column
+        if(vuMark == RelicRecoveryVuMark.LEFT) lrc = 3700; //aim for the left column
+        else if(vuMark == RelicRecoveryVuMark.CENTER) lrc = 3220; //aim for the middle column
+        else if(vuMark == RelicRecoveryVuMark.RIGHT) lrc = 2700; //aim for the right column
         else lrc = 2520; //if none detected, default to center
 
         telemetry.addData("VuMark", "%s visible", vuMark);
         telemetry.update();
         sleep(1000);
 
-        F1.setPower(.125); //drive left until at the correct column
-        F2.setPower(.125);
-        R1.setPower(-.125);
-        R2.setPower(-.125);
+        F1.setPower(-.125); //strafe left to correct column
+        F2.setPower(-.125);
+        R1.setPower(.125);
+        R2.setPower(.125);
         sleep(lrc);
         F1.setPower(0);
         F2.setPower(0);
