@@ -30,8 +30,8 @@ import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackables;
 /**
  * Created by romer on 2/2/2018.
  */
-@Autonomous(name = "Blueautonomousmk2", group = "autonomous")
-public class BlueAutonomousmk2 extends LinearOpMode {
+@Autonomous(name = "redautonomousmk2", group = "autonomous")
+public class RedAutonomousmk2 extends LinearOpMode {
     public static final String TAG = "Vuforia VuMark Sample";
     OpenGLMatrix lastLocation = null;
     VuforiaLocalizer vuforia;
