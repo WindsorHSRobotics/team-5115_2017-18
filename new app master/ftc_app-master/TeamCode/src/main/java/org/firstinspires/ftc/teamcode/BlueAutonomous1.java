@@ -24,6 +24,7 @@ import android.view.View;
  * Created by Robo-Admin on 12/13/2017.
  */
 @Autonomous(name="Red Autonomous 1", group="autonomous")
+@Disabled
 public class BlueAutonomous1 extends LinearOpMode {
     //test
 

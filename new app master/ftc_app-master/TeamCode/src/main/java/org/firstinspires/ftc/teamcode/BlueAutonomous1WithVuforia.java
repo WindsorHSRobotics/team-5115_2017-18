@@ -31,6 +31,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackables;
  * Created by Robo-Admin on 12/13/2017.
  */
 @Autonomous(name="Red Autonomous 1 with vuforia", group="autonomous")
+@Disabled
 public class BlueAutonomous1WithVuforia extends LinearOpMode {
     //test
     public static final String TAG = "Vuforia VuMark Sample";
