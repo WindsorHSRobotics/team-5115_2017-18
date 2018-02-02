@@ -228,18 +228,18 @@ public class holonomicmk1 extends OpMode
         }
         if(gamepad2.left_bumper){
             claw_front_left.setPosition(0);
-            claw_front_right.setPosition(35);
+            claw_front_right.setPosition(.3);
         }
         else{
             claw_front_right.setPosition(0);
-            claw_front_left.setPosition(35);
+            claw_front_left.setPosition(.3);
         }
         if(gamepad2.right_bumper){
             claw_rear_left.setPosition(0);
-            claw_rear_right.setPosition(35);
+            claw_rear_right.setPosition(.3);
         }
         else{
-            claw_rear_left.setPosition(35);
+            claw_rear_left.setPosition(1);
             claw_rear_right.setPosition(0);
         }
 
